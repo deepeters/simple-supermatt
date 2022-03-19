@@ -16,27 +16,27 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	
-	@RequestMapping("/topics")
+	@RequestMapping("/category")
 	public List<Category> getAllCategory() {
 		return categoryService.getAllCategory();
 	}
 	
-	@RequestMapping("/topics/{id}")
-	public Optional<Category> getTopic(@PathVariable String id) {
+	@RequestMapping("/category/{id}")
+	public Optional<Category> getCategory(@PathVariable String id) {
 		return categoryService.getCategory(id);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/topics")
-	public void addTopic(@RequestBody Category topic) {
-		categoryService.addCategory(topic);
+	@RequestMapping(method=RequestMethod.POST, value="/category")
+	public void addCategory(@RequestBody Category category) {
+		categoryService.addCategory(category);
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT, value="/topics/{id}")
-	public void updateTopic(@RequestBody Category topic, @PathVariable String id) {
-		categoryService.updateCategory(id, topic);
+	@RequestMapping(method=RequestMethod.PUT, value="/category/{id}")
+	public void updateCategory(@RequestBody Category category, @PathVariable String id) {
+		categoryService.updateCategory(id, category);
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE, value="/topics/{id}")
+	@RequestMapping(method=RequestMethod.DELETE, value="/category/{id}")
 	public void deleteCategory(@PathVariable String id) {
 		categoryService.deleteCategory(id);
 	}

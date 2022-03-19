@@ -12,28 +12,28 @@ import org.springframework.stereotype.Service;
 public class CategoryService {
 	
 	@Autowired
-	private CategoryRepository topicRepository;
+	private CategoryRepository categoryRepository;
 	
 	public List<Category> getAllCategory () {
-		List<Category> topics = new ArrayList<>();
-		topicRepository.findAll().forEach(topics::add);
-		return topics;
+		List<Category> category = new ArrayList<>();
+		categoryRepository.findAll().forEach(category::add);
+		return category;
 	}
 	
-	public Optional<Category> getTopic(String id) {
-		return topicRepository.findById(id);
+	public Optional<Category> getCategory(String id) {
+		return categoryRepository.findById(id);
 	}
 	
-	public void addCategory(Category topic) {
-		topicRepository.save(topic);
+	public void addCategory(Category category) {
+		categoryRepository.save(category);
 	}
 
-	public void updateCategory(String id, Category topic) {
-		topicRepository.save(topic);
+	public void updateCategory(String id, Category category) {
+		categoryRepository.save(category);
 	}
 
 	public void deleteCategory(String id) {
-		topicRepository.deleteById(id);
+		categoryRepository.deleteById(id);
 	}
 
 }
