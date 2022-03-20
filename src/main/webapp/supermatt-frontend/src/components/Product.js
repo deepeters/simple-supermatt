@@ -6,10 +6,20 @@ class Product extends React.Component {
   constructor(props) {
     super(props);
     this.state = { name: "", category: "", description: "" };
+    this.productChange = this.productChange.bind(this);
+    this.submitProduct = this.submitProduct.bind(this);
   }
 
   submitProduct(event) {
-    alert(this.state.name);
+    alert(
+      "Name: " +
+        this.state.name +
+        ", Category: " +
+        this.state.category +
+        ", Description: " +
+        this.state.description +
+        ""
+    );
     event.preventDefault();
   }
 
@@ -27,7 +37,7 @@ class Product extends React.Component {
           <Card.Body>
             <Form>
               <Row>
-                <Form.Group as={Col} controlId="formGridTitle">
+                <Form.Group as={Col} controlId="formGridName">
                   <Form.Label>Product Name</Form.Label>
                   <Form.Control
                     required
@@ -39,21 +49,27 @@ class Product extends React.Component {
                     placeholder="Enter Product Name"
                   />
                 </Form.Group>
-                <Form.Group as={Col}>
+                <Form.Group as={Col} controlId="formGridCategory">
                   <Form.Label>Product Category</Form.Label>
                   <Form.Control
+                    required
                     type="text"
                     name="category"
+                    value={this.state.category}
+                    onChange={this.productChange}
                     className={"bg-dark text-white"}
                     placeholder="Enter Product Category"
                   />
                 </Form.Group>
               </Row>
-              <Form.Group as={Col}>
+              <Form.Group as={Col} controlId="formGridDescription">
                 <Form.Label>Product Description</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   name="description"
+                  value={this.state.description}
+                  onChange={this.productChange}
                   className={"bg-dark text-white"}
                   placeholder="Enter Product Description"
                 />
