@@ -1,12 +1,17 @@
 import React from "react";
 
 import { Card, Table } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faList } from "@fortawesome/free-solid-svg-icons";
 
 class ProductList extends React.Component {
   render() {
     return (
       <Card className="border border-dark bg-dark text-white">
-        <Card.Header>Product List</Card.Header>
+        <Card.Header>
+          <FontAwesomeIcon icon={faList} />
+          Product List
+        </Card.Header>
         <Card.Body>
           <Table striped bordered hover variant="dark">
             <thead>

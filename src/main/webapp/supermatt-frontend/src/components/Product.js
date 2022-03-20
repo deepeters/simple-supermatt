@@ -1,6 +1,8 @@
 import React from "react";
 
 import { Card, Form, Col, Row, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 
 class Product extends React.Component {
   constructor(props) {
@@ -32,7 +34,10 @@ class Product extends React.Component {
   render() {
     return (
       <Card className="border border-dark bg-dark text-white">
-        <Card.Header>Add a Product</Card.Header>
+        <Card.Header>
+          <FontAwesomeIcon icon={faPlusSquare} />
+          Add a Product
+        </Card.Header>
         <Form onSubmit={this.submitProduct} id="productFormId">
           <Card.Body>
             <Form>
@@ -78,6 +83,7 @@ class Product extends React.Component {
           </Card.Body>
           <Card.Footer style={{ textAlign: "right" }}>
             <Button size="sm" variant="success" type="submit">
+              <FontAwesomeIcon icon={faSave} />
               Submit
             </Button>
           </Card.Footer>
