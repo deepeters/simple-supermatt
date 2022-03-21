@@ -3,7 +3,7 @@
 ## Project Description
 
 Super Matt is Java - SringBoot MVC CRUD Application that uses a ReactJS user interface to perform simple CRUD processes of a supermarket inventory.
-Spring Framework is an Enterprise Java framework that lets you write Enterprise Java Applications. SpringBoot ia a way to bootstrap a quick spring application.
+
 
 <img src="images/list.png">
 
@@ -61,24 +61,6 @@ In JAX-RS the GET method could either return an XML or JSON data formats. The an
 
 Ordinarily the data should come into the queue from a JBBC database however in the interest of accomplishing the logic of the services in this project, an Apache Derby Database is used which refreshs to null on each deployment.
 
-### Event Responses
-
-#### Status Codes & Location Headers
-
-The design of the responses send back after different methods are implemented are vital because this metadata information helps in establishment of the event responses where the client can either receive a success response or a failed response that prompts another retry. The way this project achieves this is by using some of the most popular Status Codes along with their request types included in parenthesis. They include the following:
-
-- 200 - Okay (GET, DELETE, POST).
-- 201 - Message created (POST).
-- 204 - Message deleted (DELETE).
-- 302 - Resource found.
-- 304 - Resource not modified.
-- 307 - Temporary redirected.
-- 400 - Bad request (PUT, POST).
-- 401 - Unauthorised request.
-- 403 - Forbidden request.
-- 404 - Resource not found (GET, DELETE, PUT).
-- 415 - Unsupported media type (PUT, POST).
-- 500 - Internal server error (GET, DELETE, PUT, POST).
 
 ### Future Modifications
 
