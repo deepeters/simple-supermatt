@@ -37,7 +37,14 @@ The backend of this project uses the Java programming language. To implement and
 
 ReactJS was used to build the user interface for the web application to handle the view layer. Reactjs makes dynamic web pages and also allows for reusable components. To set the frontend of this application:
 
-- After creating my API usind spring boot on the main folder, create a webapp folder cd into it and run: - npx-react-app supermatt-frontend - npm install react-bootstrap bootstrap - npm install --save react-router-dom - npm i --save @fortawesome/fontawesome-svg-core - npm install --save @fortawesome/free-solid-svg-icons - npm install --save @fortawesome/react-fontawesome - npm install axios
+- After creating my API usind spring boot on the main folder, create a webapp folder cd into it and run:
+- npx-react-app supermatt-frontend
+- npm install react-bootstrap bootstrap
+- npm install --save react-router-dom
+- npm i --save @fortawesome/fontawesome-svg-core
+- npm install --save @fortawesome/free-solid-svg-icons
+- npm install --save @fortawesome/react-fontawesome
+- npm install axios
 - Alternatively clone the repo and run npm install to install all required dependancies described on the package.json file.
 
 <img src="images/add.png">
