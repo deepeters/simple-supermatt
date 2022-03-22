@@ -25,7 +25,8 @@ class Product extends React.Component {
   };
 
   componentDidMount() {
-    const productId = +this.props.match.params.id;
+    //const productId = +this.props.match.params.id;
+    const productId = +this.props.params.match.id;
     if (productId) {
       this.findProductById(productId);
     }
@@ -40,7 +41,7 @@ class Product extends React.Component {
             id: response.data.id,
             name: response.data.name,
             category: response.data.category,
-            description: response.data.description
+            description: response.data.description,
           });
         }
       })
@@ -65,11 +66,10 @@ class Product extends React.Component {
 
     axios.post("http://localhost:8080/products", product).then((response) => {
       if (response.data != null) {
-        this.setState({"show":true});
-        this.setState({ "show": true, "method": "post" });
-        setTimeout(() => this.setState({ "show": false }), 3000);
+        this.setState({ show: true, method: "post" });
+        setTimeout(() => this.setState({ show: false }), 3000);
       } else {
-        this.setState({ "show": false });
+        this.setState({ show: false });
       }
     });
     this.setState(this.initialState);
@@ -82,16 +82,16 @@ class Product extends React.Component {
       name: this.state.name,
       category: this.state.category,
       id: this.state.id,
-      description: this.state.description
+      description: this.state.description,
     };
 
-    axios.put("http://localhost:8080/products", product).then(response => {
+    axios.put("http://localhost:8080/products", product).then((response) => {
       if (response.data != null) {
-        this.setState({ "show": true, "method": "put" });
-        setTimeout(() => this.setState({ "show": false }), 3000);
+        this.setState({ show: true, method: "put" });
+        setTimeout(() => this.setState({ show: false }), 3000);
         setTimeout(() => this.productList(), 3000);
       } else {
-        this.setState({ "show": false });
+        this.setState({ show: false });
       }
     });
     this.setState(this.initialState);
@@ -99,7 +99,7 @@ class Product extends React.Component {
 
   productChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -197,7 +197,7 @@ class Product extends React.Component {
                 Reset
               </Button>{" "}
               <Button size="sm" variant="info" type="button" onClick={this.productList.bind()}>
-                <FontAwesomeIcon icon={faList} /> Product List Reset
+                <FontAwesomeIcon icon={faList} /> Product List
               </Button>
             </Card.Footer>
           </Form>
