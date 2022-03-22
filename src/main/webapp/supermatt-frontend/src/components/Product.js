@@ -41,10 +41,9 @@ class Product extends React.Component {
     axios.post("http://localhost:8080/products", product).then((response) => {
       if (response.data != null) {
         this.setState({ show: true });
-        setTimeout(() => this.setState({ show: false }), 3000)
+        setTimeout(() => this.setState({ show: false }), 3000);
       } else {
         this.setState({ show: false });
-        
       }
     });
     this.setState(this.initialState);
@@ -62,7 +61,7 @@ class Product extends React.Component {
     return (
       <div>
         <div style={{ display: this.state.show ? "block" : "none" }}>
-          <MyToast children={{ show: this.state.show, message: "Product Added Successfully." }} />
+          <MyToast children={{ show: this.state.show, message: "Product Added Successfully.", type: "success" }} />
         </div>
         <Card className="border border-dark bg-dark text-white">
           <Card.Header>
