@@ -4,6 +4,8 @@ import MyToast from "./MyToast";
 
 import axios from "axios";
 
+import {Link} from 'react-router-dom';
+
 import { Card, Table, ButtonGroup, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -43,7 +45,7 @@ class ProductList extends React.Component {
     return (
       <div>
         <div style={{ display: this.state.show ? "block" : "none" }}>
-          <MyToast children={{ show: this.state.show, message: "Product Deleted Successfully.", type:"danger"  }} />
+          <MyToast show = { this.state.show } message = { "Product Deleted Successfully." } type = {"danger" } />
         </div>
         <Card className="border border-dark bg-dark text-white">
           <Card.Header>
@@ -75,9 +77,7 @@ class ProductList extends React.Component {
                       <td>{product.category}</td>
                       <td>
                         <ButtonGroup>
-                          <Button size="sm" variant="outline-primary">
-                            <FontAwesomeIcon icon={faEdit} />
-                          </Button>
+                        <Link to = {"edit/" + product.id} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faEdit} /></Link>{' '}
                           <Button
                             size="sm"
                             variant="outline-danger"

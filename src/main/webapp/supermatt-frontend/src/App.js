@@ -21,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/add" element={<Product />} />
+            <Route path="/edit/:id" element={<Product />} />
             <Route path="/list" element={<ProductList />} />
           </Routes>
         </Row>

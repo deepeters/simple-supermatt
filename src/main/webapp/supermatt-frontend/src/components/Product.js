@@ -6,7 +6,7 @@ import MyToast from "./MyToast";
 
 import { Card, Form, Col, Row, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSave, faPlusSquare, faUndo } from "@fortawesome/free-solid-svg-icons";
+import { faSave, faPlusSquare, faUndo, faList, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 class Product extends React.Component {
   constructor(props) {
@@ -22,6 +22,29 @@ class Product extends React.Component {
     name: "",
     category: "",
     description: "",
+  };
+
+  componentDidMount() {
+    const productId = +this.props.match.params.id;
+    if (productId) {
+      this.findProductById(productId);
+    }
+  }
+
+  findProductById = (productId) => {
+    axios
+      .get("http://localhost:8080/products/" + productId)
+      .then((response) => {
+        this.setState({
+          id: response.data.id,
+          name: response.data.name,
+          category: response.data.category,
+          description: response.data.description,
+        });
+      })
+      .catch((error) => {
+        console.error("Error - " + error);
+      });
   };
 
   resetProduct = () => {
@@ -40,8 +63,30 @@ class Product extends React.Component {
 
     axios.post("http://localhost:8080/products", product).then((response) => {
       if (response.data != null) {
-        this.setState({ show: true });
+        this.setState({ show: true, method: "post" });
         setTimeout(() => this.setState({ show: false }), 3000);
+      } else {
+        this.setState({ show: false });
+      }
+    });
+    this.setState(this.initialState);
+  };
+
+  updateProduct = (event) => {
+    event.preventDefault();
+
+    const product = {
+      name: this.state.name,
+      category: this.state.category,
+      id: this.state.id,
+      description: this.state.description,
+    };
+
+    axios.put("http://localhost:8080/products", product).then((response) => {
+      if (response.data != null) {
+        this.setState({ show: true, method: "put" });
+        setTimeout(() => this.setState({ show: false }), 3000);
+        setTimeout(() => this.productList(), 3000);
       } else {
         this.setState({ show: false });
       }
@@ -55,20 +100,32 @@ class Product extends React.Component {
     });
   };
 
+  productList = () => {
+    return this.props.history.push("/list");
+  };
+
   render() {
     const { id, name, category, description } = this.state;
 
     return (
       <div>
         <div style={{ display: this.state.show ? "block" : "none" }}>
-          <MyToast children={{ show: this.state.show, message: "Product Added Successfully.", type: "success" }} />
+          <MyToast
+            show={this.state.show}
+            message={this.state.method === "put" ? "Product Updated Successfully." : "Product Added Successfully."}
+            type={"success"}
+          />
         </div>
         <Card className="border border-dark bg-dark text-white">
           <Card.Header>
-            <FontAwesomeIcon icon={faPlusSquare} />
-            Add a Product
+            <FontAwesomeIcon icon={this.state.id ? faEdit : faPlusSquare} />{" "}
+            {this.state.id ? "Update Product" : "Add Product"}
           </Card.Header>
-          <Form onReset={this.resetProduct} onSubmit={this.submitProduct} id="productFormId">
+          <Form
+            onReset={this.resetProduct}
+            onSubmit={this.state.id ? this.updateProduct : this.submitProduct}
+            id="productFormId"
+          >
             <Card.Body>
               <Form>
                 <Row>
@@ -129,12 +186,15 @@ class Product extends React.Component {
             </Card.Body>
             <Card.Footer style={{ textAlign: "right" }}>
               <Button size="sm" variant="success" type="submit">
-                <FontAwesomeIcon icon={faSave} />
+                <FontAwesomeIcon icon={faSave} /> {this.state.id ? "Update" : "Save"}
                 Submit
               </Button>{" "}
               <Button size="sm" variant="info" type="reset">
                 <FontAwesomeIcon icon={faUndo} />
                 Reset
+              </Button>{" "}
+              <Button size="sm" variant="info" type="button" onClick={this.productList.bind()}>
+                <FontAwesomeIcon icon={faList} /> Product List Reset
               </Button>
             </Card.Footer>
           </Form>
