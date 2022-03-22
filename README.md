@@ -35,16 +35,17 @@ The backend of this project uses the Java programming language. To implement and
 
 ### Frontend
 
-ReactJS was used to build the user interface for the web application to handle the view layer. ReactJS makes dynamic web pages and also allows for reusable components. To set the frontend of this application:
-After creating SuperMatt CRUD APISs using spring boot on the main souecr folder navigate into the main/resources folder and create a webapp folder cd into it and clone the frontend repo into webapp. Run npm install to install all required dependancies described on the package.json file. 
+ReactJS was used to build the user interface for the web application to handle the view layer. ReactJS makes dynamic web pages and also allows for reusable components. To set the frontend of this application.
+After creating SuperMatt CRUD APISs using spring boot on the main souecr folder navigate into the main/resources folder and create a webapp folder cd into it and clone the frontend repo into webapp. Run npm install to install all required dependancies described on the package.json file.
 Dependancies include the following:
-        - npx-react-app supermatt-frontend
-        - npm install react-bootstrap bootstrap
-        - npm install --save react-router-dom
-        - npm i --save @fortawesome/fontawesome-svg-core
-        - npm install --save @fortawesome/free-solid-svg-icons
-        - npm install --save @fortawesome/react-fontawesome
-        - npm install axios
+
+- npx-react-app supermatt-frontend
+- npm install react-bootstrap bootstrap
+- npm install --save react-router-dom
+- npm i --save @fortawesome/fontawesome-svg-core
+- npm install --save @fortawesome/free-solid-svg-icons
+- npm install --save @fortawesome/react-fontawesome
+- npm install axios
 
 <img src="images/add.png">
 
@@ -66,17 +67,20 @@ The development of APIs applies the Richardson Maturity Model to measure level R
 The decisons made about the API aims to accomplish easy deployment of APIs, Scaling, Flexibility and Technology agnosticity. Some of the features are as follows:
 
 #### GET
-The GET method retrieves data in JSON data format. On the frontend, the get method populates the a table with all the products stored in the database. In CRUD operations this is READ. 
+
+The GET method retrieves data in JSON data format. On the frontend, the get method populates the a table with all the products stored in the database. In CRUD operations this is READ.
 
 #### POST
+
 The POST method adds items to the data in the database and takes in input as JSON. On successful post, the entry is added to the table. In CRUD operations this is CREATE.
 
 #### PUT
+
 The PUT method updates an existing record on the DB using its unique ID to retrieve, edit and post the new data. In CRUD operations this is UPDATE.
 
 #### DELETE
-The DELETE method deletes a record identified using its ID and permanently removes it from the DB. In CRUD operations this is DELETE.
 
+The DELETE method deletes a record identified using its ID and permanently removes it from the DB. In CRUD operations this is DELETE.
 
 ### Data
 
