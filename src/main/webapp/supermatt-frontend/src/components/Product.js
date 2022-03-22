@@ -25,8 +25,7 @@ class Product extends React.Component {
   };
 
   componentDidMount() {
-    //const productId = +this.props.match.params.id;
-    const productId = +this.props.params.match.id;
+    const productId = +this.props.match.params.id;
     if (productId) {
       this.findProductById(productId);
     }
@@ -121,7 +120,7 @@ class Product extends React.Component {
         </div>
         <Card className="border border-dark bg-dark text-white">
           <Card.Header>
-            <FontAwesomeIcon icon={this.state.id ? faEdit : faPlusSquare} />{" "}
+            <FontAwesomeIcon icon={this.state.id ? faEdit : faPlusSquare} />
             {this.state.id ? "Update Product" : "Add Product"}
           </Card.Header>
           <Form
@@ -190,7 +189,6 @@ class Product extends React.Component {
             <Card.Footer style={{ textAlign: "right" }}>
               <Button size="sm" variant="success" type="submit">
                 <FontAwesomeIcon icon={faSave} /> {this.state.id ? "Update" : "Save"}
-                Submit
               </Button>{" "}
               <Button size="sm" variant="info" type="reset">
                 <FontAwesomeIcon icon={faUndo} />

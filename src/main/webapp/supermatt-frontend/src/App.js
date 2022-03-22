@@ -1,5 +1,6 @@
+import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Switch } from "react-router-dom";
 
 import { Container, Row } from "react-bootstrap";
 import NavigationBar from "./components/NavigationBar";
@@ -18,12 +19,12 @@ function App() {
       <NavigationBar />
       <Container style={marginTop}>
         <Row>
-          <Routes>
-            <Route path="/" element ={<Welcome />} exact />
-            <Route path="/add" element={<Product />} exact />
-            <Route path="/edit/:id" element={<Product />} exact />
-            <Route path="/list" element ={<ProductList />} exact />
-          </Routes>
+          <Switch>
+            <Route path="/" exact component={Welcome} />
+            <Route path="/add" exact component={Product} />
+            <Route path="/edit/:id" exact component={Product} />
+            <Route path="/list" exact component={ProductList} />
+          </Switch>
         </Row>
       </Container>
       <Footer />
