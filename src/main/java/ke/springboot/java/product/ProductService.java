@@ -13,11 +13,6 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 	
-//	public List<Product> getAllProducts (String categoryId) {
-//		List<Product> products = new ArrayList<>();
-//		productRepository.findByCategoryId(categoryId).forEach(products::add); //get a film related to a particular topic
-//		return products;
-//	}
 	public List<Product> getAllProducts () {
 		List<Product> products = new ArrayList<>();
 		productRepository.findAll().forEach(products::add);
@@ -37,7 +32,7 @@ public class ProductService {
 	}
 
 	public void deleteProduct(String id) {
-		productRepository.deleteById(id);
+		productRepository.deleteById(id);  
 	}
 
 }
